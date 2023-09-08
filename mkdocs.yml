@@ -1,0 +1,30 @@
+site_name: TCG Online Docs
+site_url: https://docs.tcg-online.creativebubble.de
+nav:
+  - Home: index.md
+  - TCG Online Ranked Bot:
+    - General: TcgOnlineRankedBot/general.md
+    - Database: TcgOnlineRankedBot/database.md
+    - Commands: TcgOnlineRankedBot/commands.md
+
+
+theme:
+  palette:
+    scheme: slate
+  name: material
+  logo: images/favicon.png
+  favicon: images/favicon.png
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.sections
+    - navigation.expand
+    - navigation.prune
+    - toc.integrate
+    - navigation.top
+
+repo_url: https://github.com/JustM3dium/TcgOnlineDocs
+repo_name: JustM3dium/TcgOnlineDocs
+
+plugins:
+  - search

@@ -1,0 +1,28 @@
+name: Build and Deploy
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: 3.x
+      - run: pip install mkdocs-material
+      - run: mkdocs build --config-file ./mkdocs.yml
+      - uses: actions/upload-artifact@v3
+        with:
+          name: tcg-online-docs
+          path: ./site
+      - run: touch ./site/.refresh
+      - uses: up9cloud/action-rsync@master
+        env:
+          HOST: worker.creativebubble.de
+          USER: mover
+          PASSWORD: ${{ secrets.MOVER_PASSWORD }}
+          TARGET: /var/www/site/
+          SOURCE: ./site/ 
